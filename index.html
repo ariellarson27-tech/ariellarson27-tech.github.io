@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyProject</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+
+<body>
+    <header class="main_h">
+        <div class="row">
+
+            <a class="logo" href="#welcome">My Little Corner of the World</a>
+
+            <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav>
+                <ul>
+                    <li><a href="#welcome">Welcome</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#writing">Writing Nook</a></li>
+                    <li><a href="#gallery">Copper Gallery</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <section id="welcome">
+        <div class="section-content">
+            <h2>Welcome to My World</h2>
+            <p>A little introduction about me.</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-content">
+            <h2>A Little About Me</h2>
+            <p>I love creating, writing, and learning new things.</p>
+        </div>
+    </section>
+
+    <section id="writing">
+        <div class="section-content writing-board">
+
+            <div class="library-header">
+                <h2 class="library-plaque">
+                    <span>Samples</span>
+                    <span>&</span>
+                    <span>Snippets</span>
+
+                </h2>
+            </div>
+
+            <div class="bookshelf">
+
+                <!-- Upper compartment -->
+                <div class="shelf-compartment upper-compartment">
+
+                    <!-- Sideways book stack on the far left -->
+                    <div class="book empty-book flat-book" aria-hidden="true">
+                        <img src="images/sdwys2.png" alt="">
+                    </div>
+
+                    <!-- Upright volumes -->
+                    <div class="book upright-book volume-one"></div>
+                    <div class="book upright-book volume-two"></div>
+                    <div class="book upright-book volume-three"></div>
+
+                    <!-- Empty book on the right -->
+                    <div class="book empty-book image-book straight-book" aria-hidden="true">
+                        <img src="images/straight.png" alt="">
+                    </div>
+
+
+                    <!-- Lower compartment -->
+                    <div class="shelf-compartment lower-compartment">
+
+                        <!-- Upright volumes -->
+                        <div class="book upright-book volume-one"></div>
+                        <div class="book upright-book volume-two"></div>
+                        <div class="book upright-book volume-three"></div>
+
+                        <!-- Empty book -->
+                        <div class="book empty-book image-book" aria-hidden="true">
+                            <img src="images/tilted.png" alt="">
+                        </div>
+
+                        <!-- Sideways book stack on the right -->
+                        <div class="book empty-book flat-book" aria-hidden="true">
+                            <img src="images/sdwys1.png" alt="">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+    </section>
+
+
+    <section id="gallery">
+        <div class="section-content">
+            <h2>My Copper Gallery</h2>
+            <p>Here are some of my handmade copper creations.</p>
+
+            <div class="corkboard">
+                <!-- Gallery pictures and creative pieces will go here -->
+            </div>
+
+        </div>
+    </section>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
