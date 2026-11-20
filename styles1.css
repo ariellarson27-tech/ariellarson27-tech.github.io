@@ -515,7 +515,7 @@ section h2::after {
 
 .desk-triangle {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: auto auto;
     grid-template-areas:
         "cs cs"
