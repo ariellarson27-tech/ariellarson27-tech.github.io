@@ -1,21 +1,88 @@
-/* Overall page styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #332F21;
-    color: #ECE8DD;
-    margin: 0;
-    padding-top: 70px;
+/* =========================================================
+   1. CUSTOM FONTS
+   ========================================================= */
+
+@font-face {
+    font-family: 'Quintessential';
+    src: url('fonts/quint.r.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Marcellus';
+    src: url('fonts/marcellus.r.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
 }
 
 
-/* Navigation Header */
+/* =========================================================
+   2. GLOBAL PAGE STYLES
+   ========================================================= */
+
+body {
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(ellipse at center,
+            #332F21 45%,
+            #211D15 75%,
+            #080706 100%);
+    color: #ECE8DD;
+    margin: 0;
+    padding-top: 88px;
+    padding-left: 65px;
+    padding-right: 65px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* =========================================================
+   3. DECORATIVE SIDE BORDERS
+   ========================================================= */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: clamp(100px, 12vw, 193px);
+    background-repeat: repeat-y;
+    background-size: 100% auto;
+    background-position: top center;
+    z-index: 5;
+    pointer-events: none;
+}
+
+body::before {
+    left: 0;
+    background-image: url("images/smlsbrdr.png");
+}
+
+body::after {
+    right: 0;
+    background-image: url("images/smlsbrdr.png");
+}
+
+
+/* =========================================================
+   4. NAVIGATION HEADER
+   ========================================================= */
+
+/* Main Header */
+
 .main_h {
     position: fixed;
     top: 0;
     width: 100%;
-    max-height: 70px;
+    left: 0;
+    max-height: 88px;
     z-index: 999;
-    padding: 17px 0 6px;
+    padding: 8px 0 25px;
 
     background: linear-gradient(180deg,
             #594735 0%,
@@ -27,13 +94,21 @@ body {
     transition: all 0.3s ease;
 }
 
+/* Header Appearance While Scrolling */
+
 .main_h.scrolled {
-    background-color: #332F21;
+    background: linear-gradient(180deg,
+            #594735 0%,
+            #493A2C 45%,
+            rgba(51, 43, 33, 0.75) 75%,
+            rgba(51, 43, 33, 0.25) 90%,
+            rgba(51, 43, 33, 0) 100%);
+
     padding: 10px 0 6px;
 }
 
-
 /* Navigation Container */
+
 .row {
     width: 100%;
     max-width: 940px;
@@ -42,11 +117,11 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
-
 /* Website Logo */
+
 .logo {
     font-size: 18px;
     letter-spacing: 1px;
@@ -56,12 +131,71 @@ body {
     text-decoration: none;
     line-height: 1;
     display: block;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
 }
 
+/* Logo Profile Links */
+
+.logo>a {
+    color: #F8F2DF;
+    text-decoration: none;
+}
+
+.logo-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    margin-top: 5px;
+    font-family: 'Marcellus', serif;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+}
+
+.logo-links a {
+    color: #C5A45D;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.logo-links a:hover {
+    color: #F8F2DF;
+}
+
+.linkedin-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.logo-links a {
+    color: #C5A45D;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.logo-links a:hover {
+    color: #F8F2DF;
+}
+
+.logo-links span {
+    color: #98743A;
+    font-size: 9px;
+}
+
+.logo-name {
+    text-align: center;
+}
 
 /* Navigation Links */
+
 nav {
-    margin-left: auto;
+    margin-left: 25px;
 }
 
 nav ul {
@@ -88,8 +222,65 @@ nav ul li a {
     border-radius: 20px;
 }
 
+/* Navigation Hover Effect */
 
-/* Page sections */
+nav ul li a:hover {
+    color: #F8F2DF;
+    background: radial-gradient(ellipse farthest-side at center,
+            #B46A55 15%,
+            rgba(180, 106, 85, 0.75) 45%,
+            rgba(180, 106, 85, 0) 100%);
+    background-size: 100% 115%;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: none;
+}
+
+/* Mobile Hamburger Button */
+
+.mobile-toggle {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px 5px 12px;
+    margin-left: 15px;
+    position: absolute;
+    right: 28%;
+    top: 7px;
+    transition: transform 0.3s ease;
+}
+
+.mobile-toggle span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    margin-bottom: 5px;
+    border-radius: 1000px;
+    background: #F8F2DF;
+}
+
+/* Mobile Menu Open State */
+
+.open-nav {
+    max-height: 400px !important;
+}
+
+.open-nav nav {
+    display: block;
+}
+
+.open-nav .mobile-toggle {
+    transform: rotate(-90deg);
+}
+
+
+/* =========================================================
+   5. GENERAL PAGE SECTIONS
+   ========================================================= */
+
+/* Section Layout */
+
 section {
     min-height: 70vh;
     padding: 90px 8%;
@@ -99,11 +290,12 @@ section {
             transparent,
             rgba(185, 151, 91, 0.7),
             transparent) 1;
+
+    scroll-margin-top: 85px;
 }
 
-
-
 /* Section Content Containers */
+
 .section-content {
     max-width: 1000px;
     margin: 0 auto;
@@ -116,9 +308,10 @@ section {
     box-shadow: none;
 }
 
+/* General Paragraph Styling */
 
 .section-content p {
-    font-size: 16px;
+    font-size: 20px;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
@@ -126,12 +319,16 @@ section {
     line-height: 1.8;
 }
 
+/* General Section Headings */
 
-/* Section headings */
-/* Section Headings */
 section h1,
 section h2 {
     color: #F8F2DF;
+    font-family: 'Quintessential', cursive;
+    font-size: clamp(51px, 5.6vw, 72px);
+    font-weight: 400;
+    letter-spacing: -1.5px;
+
     display: table;
     padding: 15px 35px;
     margin-left: auto;
@@ -139,19 +336,28 @@ section h2 {
 
     background: none;
     position: relative;
-    text-shadow: none;
+}
+
+/* Section Subtitles */
+
+.section-subtitle {
+    font-family: 'Marcellus', serif;
+    font-size: 20px;
+    font-style: italic;
+    text-align: center;
+    color: #cfb377;
+    margin: -10px auto 25px;
 }
 
 /* Bronze Heading Underline */
+
 section h1::after,
 section h2::after {
     content: "";
     position: absolute;
-
     left: 1%;
     right: 1%;
     bottom: 0;
-
     height: 3px;
 
     background: linear-gradient(90deg,
@@ -161,32 +367,209 @@ section h2::after {
             #76572D 80%,
             transparent 100%);
 
-    box-shadow:
-        0 2px 5px rgba(25, 14, 8, 0.3);
-
+    box-shadow: 0 2px 5px rgba(25, 14, 8, 0.3);
     opacity: 0.8;
 }
 
 
+/* =========================================================
+   6. WELCOME SECTION
+   ========================================================= */
+
+/* Welcome Section Layout */
+
+/* Welcome Section Layout */
+
+#welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 85vh;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Welcome Frame */
+
+.welcome-frame {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    aspect-ratio: 1535 / 1484;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    filter:
+        drop-shadow(0 8px 12px rgba(25, 14, 8, 0.5)) drop-shadow(0 0 10px rgba(177, 138, 69, 0.18));
+}
+
+/* Paper Behind the Text */
+
+.welcome-paper {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    left: 5%;
+    top: 5%;
+    object-fit: fill;
+    z-index: 1;
+}
+
+/* Welcome Text Container */
+
+.welcome-content {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    left: 5%;
+    top: 5%;
+    max-height: none;
+    overflow-y: auto;
+    padding: 35px 40px;
+    box-sizing: border-box;
+
+    color: #332F21;
+    font-family: Georgia, serif;
+    text-align: left;
+
+    z-index: 2;
+}
+
+/* Frame Overlay */
+
+.welcome-frame-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Welcome Paragraphs */
+
+.welcome-content p {
+    font-family: 'Marcellus', serif;
+    font-size: clamp(15px, 1.35vw, 18px);
+    font-weight: 600;
+    line-height: 1.7;
+    margin: 0 0 16px;
+    max-width: none;
+    text-indent: 2em;
+}
+
+
+/* =========================================================
+   7. ON MY DESK SECTION
+   ========================================================= */
+
+/* Framed Workspace */
+
+.desk-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1536 / 1024;
+    filter: drop-shadow(0 10px 16px rgba(25, 14, 8, 0.5));
+}
+
+/* Workbench Background */
+
+.desk-background {
+    position: absolute;
+    left: 3%;
+    top: 8%;
+    width: 94%;
+    height: 84%;
+    object-fit: fill;
+    object-position: center;
+    z-index: 1;
+}
+
+/* Interactive Desk Items */
+
+.desk-items {
+    position: absolute;
+    left: 3%;
+    top: 8%;
+    width: 94%;
+    height: 84%;
+    z-index: 2;
+}
+
+/* Frame Overlay */
+
+.desk-frame-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Desk Image Triangle */
+
+.desk-triangle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "cs cs"
+        "jrnl wllnss";
+    justify-items: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.desk-image.cs {
+    grid-area: cs;
+}
+
+.desk-image.jrnl {
+    grid-area: jrnl;
+    transform: translate(-5%, -10%) scale(1.1);
+}
+
+.desk-image.wllnss {
+    grid-area: wllnss;
+    transform: translate(-30%, -30%) scale(1.1);
+}
+
+.desk-image img {
+    display: block;
+    width: 100%;
+    max-width: 230px;
+    height: auto;
+}
+
+
+/* =========================================================
+   8. WRITING NOOK SECTION
+   ========================================================= */
 
 /* Complete Vintage Bookshelf */
 
-/* Responsive Bookshelf */
 .bookshelf {
     position: relative;
     width: 100%;
     aspect-ratio: 1535 / 1024;
-
     container-type: inline-size;
 
     background-image: url("images/vintage.shelf.png");
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
+
+    filter:
+        drop-shadow(0 0 8px rgba(177, 138, 69, 0.22)) drop-shadow(0 0 16px rgba(126, 73, 102, 0.16));
 }
 
-
 /* Individual Books */
+
 .book {
     position: relative;
     z-index: 3;
@@ -195,30 +578,29 @@ section h2::after {
     align-items: center;
     justify-content: center;
 
-    width: 9cqw;
-    height: 9.5cqw;
-    padding: 0.65cqw 0.4cqw;
+    padding: 0;
 
-    background: linear-gradient(to right,
-            #4E3524,
-            #9A6A4F 45%,
-            #4E3524);
-
-    border: 1px solid rgba(185, 151, 91, 0.55);
-    border-radius: 4px 4px 0 0;
+    background: none;
+    border: none;
+    border-radius: 0;
 
     box-shadow:
-        3px 2px 5px rgba(126, 73, 102, 0.4),
-        inset 2px 0 4px rgba(238, 226, 194, 0.12);
+        2px 2px 8px rgba(126, 73, 102, 0.22),
+        inset 1px 0 3px rgba(238, 226, 194, 0.06);
 
     color: #F8F2DF;
     font-family: Georgia, serif;
     text-align: center;
-    cursor: pointer;
+    cursor: default;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
 }
 
-
 /* Book Placement Areas */
+
 .shelf-compartment {
     position: absolute;
     display: flex;
@@ -234,22 +616,26 @@ section h2::after {
 }
 
 /* Upper Compartment */
+
 .upper-compartment {
     top: 0%;
 }
 
 /* Lower Compartment */
+
 .lower-compartment {
-    top: 46cqw;
+    top: 43.5%;
 }
 
 /* Upright Books */
+
 .upright-book {
     width: 5.5cqw;
     height: 23.5cqw;
 }
 
 /* Picture Books */
+
 .image-book {
     width: 22cqw;
     height: 25cqw;
@@ -273,7 +659,23 @@ section h2::after {
     object-fit: fill;
 }
 
+/* Decorative Book Spines */
+
+.spine-book {
+    padding: 0;
+    overflow: hidden;
+    box-shadow: none;
+}
+
+.spine-book img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
 /* Books Lying Horizontally */
+
 .flat-book {
     width: 35cqw;
     height: auto;
@@ -294,13 +696,7 @@ section h2::after {
     object-fit: contain;
 }
 
-/* Book Hover Effect */
-.book {
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        filter 0.25s ease;
-}
+/* Book Hover Effects */
 
 .book:hover {
     transform: translateY(-8px);
@@ -311,100 +707,417 @@ section h2::after {
         inset 2px 0 4px rgba(255, 220, 170, 0.18);
 }
 
-.empty-book:hover {
-    transform: none;
-    filter: none;
-    box-shadow:
-        3px 2px 5px rgba(126, 73, 102, 0.4),
-        inset 2px 0 4px rgba(238, 226, 194, 0.12);
-}
-
 .empty-book {
     cursor: default;
     pointer-events: none;
 }
 
-/* Writing Nook Newspaper */
-.writing-paper {
-    background:
-        linear-gradient(90deg,
-            rgba(154, 106, 79, 0.22),
-            transparent 8%,
-            transparent 92%,
-            rgba(154, 106, 79, 0.22)),
-        linear-gradient(180deg,
-            rgba(154, 106, 79, 0.16),
-            transparent 10%,
-            transparent 90%,
-            rgba(154, 106, 79, 0.16)),
-        #EEE2C2;
+.empty-book:hover {
+    transform: none;
+    filter: none;
 
-    color: #332F21;
-    padding: 30px;
-    border-radius: 2px 5px 3px 6px;
-    outline: 1px solid rgba(154, 106, 79, 0.3);
-    outline-offset: -5px;
     box-shadow:
-        inset 0 0 28px rgba(126, 73, 102, 0.2),
-        3px 5px 12px rgba(126, 73, 102, 0.4);
+        3px 2px 5px rgba(126, 73, 102, 0.4),
+        inset 2px 0 4px rgba(238, 226, 194, 0.12);
+}
+
+.spine-book:hover {
+    transform: translateY(-8px);
+
+    filter:
+        brightness(1.08) drop-shadow(4px 8px 6px rgba(25, 14, 8, 0.4));
 }
 
 
-/* Hover effect for navigation links */
-nav ul li a:hover {
-    color: #F8F2DF;
-    background: radial-gradient(ellipse farthest-side at center,
-            #B46A55 15%,
-            rgba(180, 106, 85, 0.75) 45%,
-            rgba(180, 106, 85, 0) 100%);
-    background-size: 100% 115%;
+/* =========================================================
+   9. BOOK READING POPUP
+   ========================================================= */
+
+/* Popup Background */
+
+.book-popup {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    overflow-y: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+    background: rgba(20, 14, 9, 0.85);
+}
+
+.book-popup[hidden] {
+    display: none;
+}
+
+/* Open Book */
+
+.open-book {
+    position: relative;
+    display: flex;
+    width: min(900px, 90vw);
+    height: min(650px, calc(100vh - 60px));
+    background: #EEE2C2;
+    margin: auto;
+    overflow-y: auto;
+}
+
+/* Book Pages */
+
+.book-page {
+    position: relative;
+    flex: 1;
+    padding: 45px 45px 65px;
+    color: #332F21;
+    font-family: Georgia, serif;
+}
+
+/* Page Numbers */
+
+.page-number {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 13px;
+    color: #80602F;
+}
+
+/* Left Page Divider */
+
+.left-page {
+    border-right: 2px solid rgba(154, 106, 79, 0.35);
+}
+
+/* Page Content */
+
+.page-content {
+    height: 100%;
+    overflow: hidden;
+    line-height: 1.8;
+}
+
+.page-content p {
+    text-indent: 1.5em;
+    margin-top: 0;
+    margin-bottom: 0.8em;
+}
+
+/* Close Button */
+
+.close-book {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    z-index: 5;
+
+    border: none;
+    background: none;
+    color: #80602F;
+    font-family: Georgia, serif;
+    font-size: 40px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-book:hover {
+    color: #B18A45;
+}
+
+/* Page Navigation Controls */
+
+.page-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.page-controls button {
+    pointer-events: auto;
+    border: none;
+    background: none;
+    color: #80602F;
+    font-family: Georgia, serif;
+    font-size: 60px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.page-controls button:hover {
+    color: #B18A45;
+}
+
+.page-controls button:disabled {
+    opacity: 0.25;
+    cursor: default;
+}
+
+
+/* =========================================================
+   10. COPPER GALLERY SECTION
+   ========================================================= */
+
+/* Gallery Display Board */
+
+#gallery .section-content {
+    max-width: 1060px;
+}
+
+#gallery .corkboard {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1535 / 1024;
+    min-height: 0;
+    margin: 35px auto;
+    padding: 4%;
+    box-sizing: border-box;
+    background: none;
+}
+
+/* Enlarged Gallery Background */
+
+#gallery .corkboard::before {
+    content: "";
+    position: absolute;
+    inset: -15px;
+    background-image: url("images/linen.frame.png");
+    background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: none;
+    z-index: 0;
+    filter:
+        drop-shadow(0 0 8px rgba(177, 138, 69, 0.22)) drop-shadow(0 0 16px rgba(126, 73, 102, 0.16));
 }
 
+/* Gallery Photo Layout */
 
-/* Mobile Hamburger Button */
-.mobile-toggle {
-    display: none;
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px 18px;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    justify-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Individual Polaroid */
+
+/* Individual Polaroid */
+
+.polaroid {
+    position: relative;
+    width: 100%;
+    max-width: 125px;
+    aspect-ratio: 760 / 916;
+    padding: 0;
+    border: none;
+    background: none;
     cursor: pointer;
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0 4px 5px rgba(20, 11, 6, 0.4));
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.1);
+    z-index: 5;
+}
+
+/* Photograph */
+
+.polaroid-photo {
+    position: absolute;
+    top: 5.9%;
+    left: 6.6%;
+    width: 86.6%;
+    height: 73.4%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Polaroid Frame */
+
+.polaroid-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Caption */
+
+.polaroid-caption {
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+    width: 80%;
+    font-size: 11px;
+    color: #332F21;
+    text-align: center;
+    z-index: 3;
+}
+
+/* Hover Effect */
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.06);
+    filter: drop-shadow(0 10px 12px rgba(20, 11, 6, 0.6));
+    z-index: 5;
+}
+
+/* Hover Effect */
+
+.polaroid:hover {
+    transform: rotate(0deg) scale(1.06);
+    filter: drop-shadow(0 10px 12px rgba(20, 11, 6, 0.6));
+    z-index: 5;
+}
+
+/* ============================= */
+/* Gallery Image Popup */
+/* ============================= */
+
+.gallery-popup {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(20, 15, 10, 0.85);
+    z-index: 1000;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.gallery-popup[hidden] {
+    display: none;
+}
+
+.gallery-popup-content {
+    position: relative;
+    max-width: 850px;
+    max-height: 90vh;
+    padding: 25px;
+    background: #332F21;
+    border: 2px solid #B18A45;
+    border-radius: 4px;
+    box-shadow: 0 0 25px rgba(177, 138, 69, 0.25);
+    text-align: center;
+}
+
+#gallery-large-image {
+    display: block;
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+#gallery-large-caption {
+    color: #ECE8DD;
+    font-family: 'Marcellus', serif;
+    font-size: 17px;
+    line-height: 1.6;
+    margin: 18px 10px 5px;
+}
+
+.gallery-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
     background: none;
     border: none;
-    padding: 5px 5px 12px;
-    position: absolute;
-    right: 22px;
-    top: 0;
-    transition: transform 0.3s ease;
+    color: #ECE8DD;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 2;
 }
 
-.mobile-toggle span {
-    display: block;
-    width: 30px;
-    height: 4px;
-    margin-bottom: 5px;
-    border-radius: 1000px;
-    background: #F8F2DF;
+.gallery-close:hover {
+    color: #B18A45;
+}
+
+/* =========================================================
+   11. SCROLLBAR STYLING
+   ========================================================= */
+
+/* Chrome, Edge, and Safari */
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #332719;
+    border-left: 1px solid #594735;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right,
+            #76572D,
+            #B18A45 35%,
+            #C5A45D 50%,
+            #98743A 100%);
+
+    border: 2px solid #332719;
+    border-radius: 10px;
+
+    box-shadow:
+        inset 1px 0 2px rgba(255, 231, 170, 0.45),
+        inset -1px 0 2px rgba(25, 14, 8, 0.4),
+        0 0 4px rgba(197, 164, 93, 0.25);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to right,
+            #98743A,
+            #C5A45D 50%,
+            #D6B975 65%,
+            #B18A45);
+
+    box-shadow:
+        inset 1px 0 3px rgba(255, 239, 190, 0.6),
+        0 0 6px rgba(197, 164, 93, 0.4);
+}
+
+/* Firefox */
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #98743A #332719;
 }
 
 
-/* Mobile Menu Open State */
-.open-nav {
-    max-height: 400px !important;
-}
+/* =========================================================
+   12. RESPONSIVE / MOBILE LAYOUT
+   ========================================================= */
 
-.open-nav nav {
-    display: block;
-}
-
-.open-nav .mobile-toggle {
-    transform: rotate(-90deg);
-}
-
-
-/* Mobile Layout */
 @media only screen and (max-width: 766px) {
+
+    /* Mobile Navigation */
+
     nav {
         display: none;
+        width: 100%;
     }
 
     .main_h {
@@ -413,10 +1126,6 @@ nav ul li a:hover {
 
     .mobile-toggle {
         display: block;
-    }
-
-    nav {
-        width: 100%;
     }
 
     nav ul {
@@ -436,6 +1145,8 @@ nav ul li a:hover {
         padding: 10px;
     }
 
+    /* Mobile Header Container */
+
     .row {
         flex-wrap: wrap;
         align-items: center;
@@ -453,56 +1164,23 @@ nav ul li a:hover {
     }
 }
 
-html {
-    scroll-behavior: smooth;
+/* ========================================
+   TYPOGRAPHY
+======================================== */
+
+/* Main body font */
+body * {
+    font-family: 'Marcellus', serif !important;
 }
 
-
-/* Section scroll positioning */
-section {
-    scroll-margin-top: 85px;
-}
-
-
-
-/* Copper Gallery Workspace */
-#gallery .section-content {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-}
-
-
-
-/* Copper Gallery Corkboard */
-
-#gallery .corkboard {
-    position: relative;
-
-    min-height: 450px;
-    margin: 35px auto;
-    padding: 30px;
-
-    background-image: url("images/linen.frame.png");
-    background-size: 100% 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    box-shadow:
-        0 12px 24px rgba(20, 11, 6, 0.65),
-        inset 0 2px 8px rgba(255, 225, 175, 0.18),
-        inset 0 -5px 12px rgba(25, 14, 8, 0.35);
-}
-
-
-
-/* Ambient Glow - Decorative Objects */
-.bookshelf {
-    filter:
-        drop-shadow(0 0 8px rgba(177, 138, 69, 0.22)) drop-shadow(0 0 16px rgba(126, 73, 102, 0.16));
-}
-
-#gallery .corkboard {
-    filter:
-        drop-shadow(0 0 8px rgba(177, 138, 69, 0.22)) drop-shadow(0 0 16px rgba(126, 73, 102, 0.16));
+/* Decorative heading font */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.logo,
+nav a {
+    font-family: 'Quintessential', cursive !important;
 }
