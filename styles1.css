@@ -1282,7 +1282,9 @@ section h2::after {
     }
 }
 
-/* Center Gallery and Writing Nook Headings */
+/* Center Section Headings */
+#welcome h2,
+#desk h2,
 #gallery h2,
 #writing h2 {
     display: block;
