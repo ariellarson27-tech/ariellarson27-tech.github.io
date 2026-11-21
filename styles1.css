@@ -516,17 +516,14 @@ section h2::after {
 .desk-triangle {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-rows: auto auto;
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-areas:
         "cs cs"
         "jrnl wllnss";
     justify-items: center;
     align-items: center;
     gap: 15px;
-}
-
-.desk-image.cs {
-    grid-area: cs;
+    min-height: 0;
 }
 
 .desk-image.jrnl {
@@ -539,11 +536,132 @@ section h2::after {
     transform: translate(-30%, -30%) scale(1.1);
 }
 
-.desk-image img {
-    display: block;
+.desk-image {
     width: 100%;
-    max-width: 230px;
-    height: auto;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* CS+ Image */
+.desk-image.cs img {
+    max-width: 62.8%;
+    transform: translateX(75%);
+}
+
+/* Journal and Wellness Images */
+.desk-image.jrnl img,
+.desk-image.wllnss img {
+    max-width: 65.8%;
+}
+
+/* Desk Item Hover Animation */
+.desk-image {
+    transition: transform 0.25s ease;
+    cursor: pointer;
+}
+
+.desk-image:hover {
+    animation: desk-wiggle 0.4s ease-in-out;
+    filter: drop-shadow(0 5px 8px rgba(25, 14, 8, 0.35));
+}
+
+@keyframes desk-wiggle {
+
+    0%,
+    100% {
+        rotate: 0deg;
+        scale: 1;
+    }
+
+    25% {
+        rotate: -2deg;
+        scale: 1.04;
+    }
+
+    50% {
+        rotate: 2deg;
+        scale: 1.06;
+    }
+
+    75% {
+        rotate: -1deg;
+        scale: 1.04;
+    }
+}
+
+/* Desk Notecard */
+.desk-notecard {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 53%;
+    aspect-ratio: 1 / 1.3;
+    background-image: url("dimages/ntcrd.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: 4;
+    transform: translate(-50%, -50%);
+    padding: 5%;
+    box-sizing: border-box;
+    filter: drop-shadow(0 8px 12px rgba(25, 14, 8, 0.45));
+    animation: notecard-appear 0.3s ease-out;
+}
+
+.desk-notecard[hidden] {
+    display: none;
+}
+
+.notecard-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    text-align: center;
+    color: #332518;
+    direction: rtl;
+}
+
+.notecard-content>* {
+    direction: ltr;
+    unicode-bidi: plaintext;
+    text-align: center;
+}
+
+.notecard-content h3 {
+    font-family: 'Quintessential', serif;
+    font-size: clamp(14px, 2vw, 24px);
+    margin: 10% 0 8%;
+}
+
+.notecard-content p {
+    font-family: 'Marcellus', serif;
+    font-size: clamp(14px, 1.5vw, 19px);
+    line-height: 1.6;
+}
+
+.notecard-close {
+    position: absolute;
+    top: 10%;
+    right: 7%;
+    z-index: 2;
+    border: none;
+    background: none;
+    color: #49321d;
+    font-size: clamp(25.3px, 2.875vw, 36.8px);
+    cursor: pointer;
+}
+
+@keyframes notecard-appear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -47%) scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 
@@ -1162,6 +1280,13 @@ section h2::after {
         text-align: center;
         flex: 1;
     }
+}
+
+/* Center Gallery and Writing Nook Headings */
+#gallery h2,
+#writing h2 {
+    display: block;
+    text-align: center;
 }
 
 /* ========================================

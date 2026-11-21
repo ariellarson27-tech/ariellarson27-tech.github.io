@@ -226,3 +226,43 @@ galleryPopup.addEventListener("click", function (event) {
         galleryPopup.hidden = true;
     }
 });
+
+// Desk Notecard Interaction
+
+const deskNotecard = document.getElementById("desk-notecard");
+const notecardTitle = document.getElementById("notecard-title");
+const notecardDescription = document.getElementById("notecard-description");
+const notecardClose = document.getElementById("notecard-close");
+
+const deskProjects = {
+    cs: {
+        title: "Cybersecurity & IT",
+        description: "I'm starting to explore the world of cybersecurity and IT, with my sights set on earning my CompTIA Security+ certification. I'm curious to see where this path might take me, whether that's cybersecurity, IT support, or something I haven't discovered yet. There's a whole new corner of tech I'd love to explore!"
+    },
+    jrnl: {
+        title: "Writing Journal",
+        description: "I've finally got a full plot mapped out for my first novel, and I'm so excited to start putting it all together! I've spent so much time dreaming up this story, working through the details, and figuring out where I want it to go. Now I finally have a roadmap to follow, and my next goal is to turn all those ideas into a first draft."
+    },
+    wllnss: {
+        title: "Health & Wellness",
+        description: "I've been working on getting back into the habit of taking care of myself, both physically and mentally. Between work, family, and everything else life throws my way, it's easy to put myself on the back burner. I'm trying to change that. My goal is to build routines I can actually stick with, get stronger, and make a little more time for me. It's a process, but I'm working on it!"
+    }
+};
+
+document.querySelectorAll(".desk-image").forEach(function (item) {
+    item.addEventListener("click", function () {
+        const projectKey = Object.keys(deskProjects).find(function (key) {
+            return item.classList.contains(key);
+        });
+
+        if (!projectKey) return;
+
+        notecardTitle.textContent = deskProjects[projectKey].title;
+        notecardDescription.textContent = deskProjects[projectKey].description;
+        deskNotecard.hidden = false;
+    });
+});
+
+notecardClose.addEventListener("click", function () {
+    deskNotecard.hidden = true;
+});
